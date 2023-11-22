@@ -11,11 +11,6 @@
 </head>
 
 <body>
-
-  <?php
-    include("config.php");
-  ?>
-
   <div class="container-fluid">
     <div class="row flex-nowrap">
       <div class="bg-dark col-auto col-md-3 col-lg-2 min-vh-100 d-flex flex-column justify-content-between">
@@ -26,8 +21,8 @@
 
           <ul class="nav nav-pills flex-column mt-4">
             <li class="nav-item py-2 py-sam-0">
-              <a href="#" class="nav-link">
-                <i class="fs-5 fa fa-guage"></i><span class="link-side-bar fs-4 d-none d-sm-inline">A</span>
+              <a href="newCard.php" class="nav-link">
+                <i class="fs-5 fa fa-guage"></i><span class="link-side-bar fs-4 d-none d-sm-inline">Nova Tartefa</span>
               </a>
             </li>
 
