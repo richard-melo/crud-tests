@@ -17,8 +17,4 @@ class Config
         ]);
         return $this->PDO;
     }
-
-    public function query($sql) {
-        return $this->PDO->query($sql);
-    }
 }
