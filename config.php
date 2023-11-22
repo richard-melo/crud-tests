@@ -22,5 +22,3 @@ class Config
         return $this->PDO->query($sql);
     }
 }
-
-?>
