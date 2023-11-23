@@ -1,12 +1,11 @@
 <?php
 
-class Config
+class Database
 {
     private $connectionConfig;
     private $PDO;
 
     public function __construct() {
-        echo 2;
         $this->connectionConfig = ['HOST' => 'localhost','USER' => 'root', 'PASSWORD' => '', 'BASE' => 'information'];
     }
 
