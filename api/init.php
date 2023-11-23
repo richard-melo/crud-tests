@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require './vendor/autoload.php';
+
 spl_autoload_register(function ($class) {
     require __DIR__ . "/src/$class.php";
 });
