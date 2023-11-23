@@ -46,7 +46,7 @@ class InformationController
                 $rows = $this->gateway->update($req, $data);
 
                 echo json_encode([
-                    "message" => "Product $id updated",
+                    "message" => "Information $id updated",
                     "rows" => $rows
                 ]);
                 break;
@@ -55,7 +55,7 @@ class InformationController
                 $rows = $this->gateway->delete($id);
 
                 echo json_encode([
-                    "message" => "Product $id deleted",
+                    "message" => "Information $id deleted",
                     "rows" => $rows
                 ]);
                 break;
