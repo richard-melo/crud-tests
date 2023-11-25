@@ -5,81 +5,78 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Crud-tests</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="row flex-nowrap">
-      <div class="bg-dark col-auto col-md-3 col-lg-2 min-vh-100 d-flex flex-column justify-content-between">
-        <div class="bg-dark p-2">
-          <a class="d-flex text-decoration-none mt-1 aling-itens-center text-white">
-            <span class="fs-4">Crud-tests</span>
-          </a>
-
-          <ul class="nav nav-pills flex-column mt-4">
-            <li class="nav-item py-2 py-sam-0">
-              <a href="newCard.php" class="nav-link">
-                <i class="fs-5 fa fa-guage"></i><span class="link-side-bar fs-4 d-none d-sm-inline">Nova Tartefa</span>
-              </a>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Crud-tests</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#"></a>
             </li>
-
-            <li class="nav-item py-2 py-sam-0">
-              <a href="#" class="nav-link">
-                <i class="fs-5 fa fa-guage"></i><span class="link-side-bar fs-4 d-none d-sm-inline">B</span>
-              </a>
-            </li>
-
-            <li class="nav-item py-2 py-sam-0">
-              <a href="#" class="nav-link">
-                <i class="fs-5 fa fa-guage"></i><span class="link-side-bar fs-4 d-none d-sm-inline">C</span>
-              </a>
+            <li class="nav-item">
+              <a class="nav-link" href="newCard.php">Cadastro</a>
             </li>
           </ul>
         </div>
       </div>
+    </nav>
+  </header>
 
-
-      <div class="card">
-        <table class="bg-dark mt-10 text-white">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center">Cards</h1>
       </div>
-
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <div class="table-responsive d-flex justify-content-center">
+          <table class="table bg-dark mt-10 text-white" style="max-width: 70%;">
+            <thead>
+              <tr>
+                <th style="max-width: 3.5em;" scope="col">ID</th>
+                <th style="max-width: 3.5em;" scope="col">Responsável</th>
+                <th style="max-width: 3.5em;" scope="col">Comentário</th>
+                <th style="max-width: 3.5em;" scope="col">Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              require_once './api/Database.php';
+              require_once './api/InformationGateway.php';
+              $dataBase = new Database();
+              $informationGateway = new InformationGateway($dataBase);
+              $consultInformation = $informationGateway->getAll();
+
+              foreach ($consultInformation as $key => $value) {
+                echo "<tr>";
+                echo "<th scope='row'>{$value['id']}</th>";
+                echo "<td>{$value['responsible']}</td>";
+                echo "<td>{$value['comment']}</td>";
+                echo "<td>{$value['link']}</td>";
+                echo "</tr>";
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>
