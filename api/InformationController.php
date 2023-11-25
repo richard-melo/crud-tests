@@ -8,8 +8,9 @@ class InformationController
 
     public function processRequest(string $method, ?string $id): void
     {
+        echo "ID: $id";
+        echo "Method: $method";
         if ($id) {
-
             $this->processResourceRequest($method, $id);
         } else {
 

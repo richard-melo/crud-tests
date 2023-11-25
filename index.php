@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#"></a>
+              <a class="nav-link" href="graph.php">Gráficos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="newCard.php">Cadastro</a>
@@ -36,6 +36,10 @@
       <div class="col-12">
         <h1 class="text-center">Cards</h1>
       </div>
+      <div style="text-align: center;">
+        <h2 id="clock"></h2>
+      </div>
+
     </div>
   </div>
 
@@ -75,6 +79,19 @@
       </div>
     </div>
   </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const time = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = time;
+        }
+
+        setInterval(updateClock, 1000);
+    </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

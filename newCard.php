@@ -21,7 +21,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
+                            <a class="nav-link" href="#">Grafícos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="newCard.php">Cadastro</a>
@@ -32,10 +32,9 @@
         </nav>
     </header>
 
-
     <h1 style="text-align: center;">Nova Tarefa</h1>
     <div style="display: flex; justify-content: center;">
-        <form action="save.php" method="POST" class="formNewTask" style="width: 50%;">
+        <form action="./api/information" method="POST" class="formNewTask" style="width: 50%;">
             <input type="hidden" name="action" value="save">
             <div class="mb-3">
                 <label for="link" class="form-label">Link Task</label>
@@ -46,9 +45,9 @@
                 <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
             </div>
             <div class="mb-3">
-                <label for="difficulty" class="form-label">Dificuldade</label>
-                <input type="range" class="form-control" name="difficulty" id="difficulty" min="1" max="10">
-                <div class="form-text text-center" id="difficultyValue">6</div>
+                <label for="difficulty" class="form-label">Nível de Dificuldade</label>
+                <input type="range" class="form-control" name="difficulty" id="difficulty" min="1" max="5">
+                <div class="form-text text-center" id="difficultyValue">3</div>
 
                 <script>
                     const difficultyInput = document.getElementById('difficulty');
@@ -74,4 +73,7 @@
             </div>
         </form>
     </div>
+
+
+
 </body>
