@@ -149,20 +149,23 @@
     setInterval(updateClock, 1000);
 
     function excluirInformation(id) {
-      const url = `./api/information/${id}`;
-      const options = {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      };
+      const confirmDelete = confirm("Tem certeza que deseja deletar essa card?");
+      if (confirmDelete) {
+        const url = `./api/information/${id}`;
+        const options = {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
 
-      fetch(url, options)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          window.location.reload();
-        });
+        fetch(url, options)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            window.location.reload();
+          });
+      }
     }
   </script>
 
