@@ -34,7 +34,7 @@
 
     <h1 style="text-align: center;">Nova Tarefa</h1>
     <div style="display: flex; justify-content: center;">
-        <form action="index.php" method="POST" class="formNewTask" style="width: 50%;">
+        <form action="./api/information" method="POST" class="formNewTask" style="width: 50%;">
             <input type="hidden" name="action" value="save">
             <div class="mb-3">
                 <label for="link" class="form-label">Link Task</label>
@@ -69,8 +69,28 @@
             </div>
             <div class="d-flex justify-content-between">
                 <a href="index.php" class="btn btn-dark">Voltar</a>
-                <button type="submit" class="btn btn-dark float-end">Submit</button>
+                <button class="btn btn-dark float-end" onclick="create();" >Submit</button>
             </div>
         </form>
     </div>
+
+    <script>
+
+    function create() {
+        const url = `./api/information/`;
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        fetch(url, options)
+            .then(response => response.json())
+            .then(data => {
+                alert('Tarefa cadastrada com sucesso!');
+                window.location.replace('index.php');
+            });
+    }
+    </script>
 </body>

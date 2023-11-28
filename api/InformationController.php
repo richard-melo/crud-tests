@@ -87,6 +87,7 @@ class InformationController
                     "message" => "Information created",
                     "id" => $id
                 ]);
+                header("Location: index.php");
                 break;
 
             default:
