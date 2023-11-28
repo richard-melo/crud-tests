@@ -27,8 +27,8 @@ class InformationGatewayTest extends TestCase
         ];
 
         $this->pdo->shouldReceive('prepare')
-                  ->once()
-                  ->andReturn($stmt = m::mock(PDOStatement::class));
+            ->once()
+            ->andReturn($stmt = m::mock(PDOStatement::class));
 
         $stmt->shouldReceive('bindValue')->times(4);
         $stmt->shouldReceive('execute');
@@ -42,8 +42,8 @@ class InformationGatewayTest extends TestCase
     public function testGetAll()
     {
         $this->pdo->shouldReceive('prepare')
-                  ->once()
-                  ->andReturn($stmt = m::mock(PDOStatement::class));
+            ->once()
+            ->andReturn($stmt = m::mock(PDOStatement::class));
 
         $stmt->shouldReceive('execute');
         $stmt->shouldReceive('fetchAll')->andReturn(['data']);
@@ -58,8 +58,8 @@ class InformationGatewayTest extends TestCase
         $id = '1';
 
         $this->pdo->shouldReceive('prepare')
-                  ->once()
-                  ->andReturn($stmt = m::mock(PDOStatement::class));
+            ->once()
+            ->andReturn($stmt = m::mock(PDOStatement::class));
 
         $stmt->shouldReceive('bindValue')->once();
         $stmt->shouldReceive('execute');
@@ -76,8 +76,8 @@ class InformationGatewayTest extends TestCase
         $data = ['comment' => 'Updated Comment'];
 
         $this->pdo->shouldReceive('prepare')
-                  ->once()
-                  ->andReturn($stmt = m::mock(PDOStatement::class));
+            ->once()
+            ->andReturn($stmt = m::mock(PDOStatement::class));
 
         $stmt->shouldReceive('bindValue')->times(count($data) + 1);
         $stmt->shouldReceive('execute');
@@ -93,8 +93,8 @@ class InformationGatewayTest extends TestCase
         $id = '1';
 
         $this->pdo->shouldReceive('prepare')
-                  ->once()
-                  ->andReturn($stmt = m::mock(PDOStatement::class));
+            ->once()
+            ->andReturn($stmt = m::mock(PDOStatement::class));
 
         $stmt->shouldReceive('bindValue')->once();
         $stmt->shouldReceive('execute');

@@ -43,7 +43,7 @@
     </div>
   </div>
 
-  <div class="container mt-5">
+  <!-- <div class="container mt-5">
     <div class="row">
       <div class="col-12">
         <form method="GET" action="" class="d-flex justify-content-center">
@@ -77,7 +77,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="container mt-5">
     <div class="row">
@@ -108,7 +108,7 @@
                 echo "<td>{$value['responsible']}</td>";
                 echo "<td>{$value['comment']}</td>";
                 echo "<td>{$value['link']}</td>";
-                echo "<td><button onclick = '' class='btn btn-primary'>Alterar</button></td>";
+                echo "<td><button onclick = 'alterInformation({$value['id']})' class='btn btn-dark'>Alterar</button></td>";
                 echo "<td><button onclick = 'excluirInformation({$value['id']})' class='btn btn-danger'>Excluir</button></td>";
                 echo "</tr>";
               }
@@ -166,6 +166,10 @@
             window.location.reload();
           });
       }
+    }
+
+    function alterInformation(id) {
+      window.location.href = `alterCard.php?id=${id}`;
     }
   </script>
 

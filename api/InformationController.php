@@ -47,6 +47,7 @@ class InformationController
                     "message" => "Information $id updated",
                     "rows" => $rows
                 ]);
+                header("Location: index.php");
                 break;
 
             case "DELETE":
