@@ -46,6 +46,42 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-12">
+        <form method="GET" action="" class="d-flex justify-content-center">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="start_date">Data Inicial</label>
+                <input type="date" class="form-control" id="start_date" name="start_date">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="end_date">Data Final</label>
+                <input type="date" class="form-control" id="end_date" name="end_date">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="complexity">Nível de Complexidade</label>
+                <select class="form-control" id="complexity" name="complexity">
+                  <option value="">Selecione</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
         <div class="table-responsive d-flex justify-content-center">
           <table class="table bg-dark mt-10 text-white" style="max-width: 70%;">
             <thead>
@@ -80,18 +116,35 @@
     </div>
   </div>
 
-    <script>
-        function updateClock() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const time = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('clock').textContent = time;
-        }
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      const table = document.querySelector('table');
 
-        setInterval(updateClock, 1000);
-    </script>
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Perform filter action here
+      });
+
+      table.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          form.submit();
+        }
+      });
+    });
+
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const time = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

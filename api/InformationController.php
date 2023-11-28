@@ -75,9 +75,7 @@ class InformationController
                 break;
 
             case "POST":
-                $data = (array) json_decode(file_get_contents("php://input"), true);
-
-                $errors = $this->getValidationErrors($data);
+                $errors = $this->getValidationErrors($_POST);
 
                 if (!empty($errors)) {
                     http_response_code(422);
@@ -85,7 +83,7 @@ class InformationController
                     break;
                 }
 
-                $id = $this->gateway->create($data);
+                $id = $this->gateway->create($_POST);
 
                 http_response_code(201);
                 echo json_encode([
@@ -104,14 +102,8 @@ class InformationController
     {
         $errors = [];
 
-        if ($is_new && empty($data["name"])) {
-            $errors[] = "name is required";
-        }
-
-        if (array_key_exists("size", $data)) {
-            if (filter_var($data["size"], FILTER_VALIDATE_INT) === false) {
-                $errors[] = "size must be an integer";
-            }
+        if ($is_new && empty($data["link"])) {
+            $errors[] = "link is required";
         }
 
         return $errors;

@@ -86,4 +86,25 @@ class InformationGateway
 
         return $delete->rowCount();
     }
+
+    public function consultDificultyForGraph($labels = true): string
+    {
+        $sql = "SELECT difficulty, COUNT(*) as count FROM information GROUP BY difficulty";
+        $select = $this->conn->prepare($sql);
+        $select->execute();
+
+        $difficulty = [];
+        $req = $select->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($req as $key => $value) {
+            $difficulty[$value['difficulty']] = $value['count'];
+        }
+
+        if ($labels) {
+            $difficulty = array_keys($difficulty);
+            return implode(', ', $difficulty);
+        } else {
+            $difficulty = array_values($difficulty);
+            return implode(', ', $difficulty);
+        }
+    }
 }

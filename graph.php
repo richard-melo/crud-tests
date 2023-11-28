@@ -38,6 +38,15 @@
         <canvas id="myChart" width="20" height="20"></canvas>
     </div>
 
+
+    <?php 
+    require_once './api/Database.php';
+    require_once './api/InformationGateway.php';
+    $dataBase = new Database();
+    $informationGateway = new InformationGateway($dataBase);
+    $labels = $informationGateway->consultDificultyForGraph();
+    $data = $informationGateway->consultDificultyForGraph(false);
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         var ctx = document.getElementById('myChart');
@@ -46,13 +55,13 @@
             type: 'pie',
             // dados que serão renderizados
             data: {
-                labels: ['N.1', 'N.2', 'N.3', 'N.4', 'N.5'],
+                labels: [<?= $labels ?>],
                 // datasets são os conjuntos de dados que serão renderizados
                 datasets: [{
                     // label é o nome do conjunto de dados
                     label: 'Nível de complexidade',
                     // data são os valores que serão renderizados
-                    data: [1, 2, 3, 4, 5],
+                    data: [<?= $data ?>],
                     // backgroundColor é a cor de fundo do conjunto de dados
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)', // vermelho
