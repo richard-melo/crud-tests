@@ -44,8 +44,8 @@
     require_once './api/InformationGateway.php';
     $dataBase = new Database();
     $informationGateway = new InformationGateway($dataBase);
-    $labels = $informationGateway->consultDificultyForGraph();
-    $data = $informationGateway->consultDificultyForGraph(false);
+    $labels = $informationGateway->consultDifficultyForGraph();
+    $data = $informationGateway->consultDifficultyForGraph(false);
     ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>

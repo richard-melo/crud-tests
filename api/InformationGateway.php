@@ -15,15 +15,17 @@ class InformationGateway
         $comment = $data['comment'];
         $difficulty = $data['difficulty'];
         $responsible = $data['responsible'];
+        $date = new DateTime();
 
-        $sql = "INSERT INTO information (link, comment, difficulty, responsible) ";
-        $sql .= "VALUES (:link, :comment, :difficulty, :responsible)";
+        $sql = "INSERT INTO information (link, comment, difficulty, responsible, date) ";
+        $sql .= "VALUES (:link, :comment, :difficulty, :responsible, :date)";
 
         $insert = $this->conn->prepare($sql);
         $insert->bindValue(":link", $link);
         $insert->bindValue(":comment", $comment);
         $insert->bindValue(":difficulty", $difficulty);
         $insert->bindValue(":responsible", $responsible);
+        $insert->bindValue(":date", $date->format('Y-m-d H:i:s'));
         $insert->execute();
 
         $lastId = $this->conn->lastInsertId();
@@ -87,7 +89,7 @@ class InformationGateway
         return $delete->rowCount();
     }
 
-    public function consultDificultyForGraph($labels = true): string
+    public function consultDifficultyForGraph($labels = true): string
     {
         $sql = "SELECT difficulty, COUNT(*) as count FROM information GROUP BY difficulty";
         $select = $this->conn->prepare($sql);
