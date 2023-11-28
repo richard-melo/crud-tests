@@ -13,7 +13,7 @@ require_once './api/Database.php';
 require_once './api/InformationGateway.php';
 $dataBase = new Database();
 $informationGateway = new InformationGateway($dataBase);
-$consult = $informationGateway->get('13');
+$consult = $informationGateway->get($_GET['id']);
 ?>
 <body>
 
@@ -40,7 +40,7 @@ $consult = $informationGateway->get('13');
 
     <h1 style="text-align: center;">Alterar Tarefa</h1>
     <div style="display: flex; justify-content: center;">
-        <form action="./api/information" method="PATCH" class="formNewTask" style="width: 50%;">
+        <form action="" method="PATCH" class="formAlterTask" id="alter" style="width: 50%;">
             <div class="mb-3">
                 <label for="link" class="form-label">Link Task</label>
                 <input class="form-control" name="link" id="link" placeholder="https://suaTarefa.com" value="<?php echo $consult['link']; ?>">
@@ -80,20 +80,33 @@ $consult = $informationGateway->get('13');
     </div>
 
     <script>
+    document.getElementById('alter').addEventListener('submit', function(event) {
+        event.preventDefault();
+    });
+
     function alter(id) {
         const url = `./api/information/${id}`;
+        const form = document.querySelector('.formAlterTask');
+        const formData = new FormData(form);
+        const data = {};
+
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+
         const options = {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify(data)
         };
 
         fetch(url, options)
             .then(response => response.json())
-            .then(data => {
+            .finally(json => {
                 alert('Tarefa alterada com sucesso!');
-                window.location.replace('index.php');
+                window.location.href = 'index.php';
             });
     }
     </script>

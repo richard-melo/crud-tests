@@ -11,7 +11,6 @@ class InformationController
         if ($id) {
             $this->processResourceRequest($method, $id);
         } else {
-
             $this->processCollectionRequest($method);
         }
     }
@@ -32,8 +31,9 @@ class InformationController
                 break;
 
             case "PATCH":
+                $data = json_decode(file_get_contents("php://input"), true);
 
-                $errors = $this->getValidationErrors($_POST, false);
+                $errors = $this->getValidationErrors($data, false);
 
                 if (!empty($errors)) {
                     http_response_code(422);
@@ -41,7 +41,7 @@ class InformationController
                     break;
                 }
 
-                $rows = $this->gateway->update($req, $_POST);
+                $rows = $this->gateway->update($req, $data);
 
                 echo json_encode([
                     "message" => "Information $id updated",

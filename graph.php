@@ -34,7 +34,7 @@
 
     <h1 style="text-align: center;">Nível de complexidade</h1>
 
-    <div class="container" style="width: 450px; height: 450px;">
+    <div class="container" style="width: 550px; height: 550px;">
         <canvas id="myChart" width="20" height="20"></canvas>
     </div>
 

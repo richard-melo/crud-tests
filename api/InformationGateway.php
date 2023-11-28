@@ -63,8 +63,9 @@ class InformationGateway
             $sql .= "$key = :$key, ";
         }
 
-        $sql = substr($sql, 0, -2);
+        $sql = rtrim($sql, ', ');
         $sql .= " WHERE id = :id";
+
 
         $update = $this->conn->prepare($sql);
 
