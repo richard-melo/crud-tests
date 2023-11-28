@@ -8,8 +8,6 @@ class InformationController
 
     public function processRequest(string $method, ?string $id): void
     {
-        echo "ID: $id";
-        echo "Method: $method";
         if ($id) {
             $this->processResourceRequest($method, $id);
         } else {
@@ -34,9 +32,8 @@ class InformationController
                 break;
 
             case "PATCH":
-                $data = (array) json_decode(file_get_contents("php://input"), true);
 
-                $errors = $this->getValidationErrors($data, false);
+                $errors = $this->getValidationErrors($_POST, false);
 
                 if (!empty($errors)) {
                     http_response_code(422);
@@ -44,7 +41,7 @@ class InformationController
                     break;
                 }
 
-                $rows = $this->gateway->update($req, $data);
+                $rows = $this->gateway->update($req, $_POST);
 
                 echo json_encode([
                     "message" => "Information $id updated",

@@ -59,7 +59,7 @@
                 // datasets são os conjuntos de dados que serão renderizados
                 datasets: [{
                     // label é o nome do conjunto de dados
-                    label: 'Nível de complexidade',
+                    label: 'Quantidade',
                     // data são os valores que serão renderizados
                     data: [<?= $data ?>],
                     // backgroundColor é a cor de fundo do conjunto de dados
