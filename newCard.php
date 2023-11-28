@@ -34,7 +34,7 @@
 
     <h1 style="text-align: center;">Nova Tarefa</h1>
     <div style="display: flex; justify-content: center;">
-        <form action="./api/information" method="POST" class="formNewTask" style="width: 50%;">
+        <form action="index.php" method="POST" class="formNewTask" style="width: 50%;">
             <input type="hidden" name="action" value="save">
             <div class="mb-3">
                 <label for="link" class="form-label">Link Task</label>
@@ -68,12 +68,14 @@
                 </select>
             </div>
             <div class="d-flex justify-content-between">
-                <button type="submit" class="btn btn-dark">Submit</button>
-                <a href="index.php" class="btn btn-dark float-end">Voltar</a>
+                <a href="index.php" class="btn btn-dark">Voltar</a>
+                <button type="submit" class="btn btn-dark float-end">Submit</button>
             </div>
         </form>
     </div>
-
-
-
-</body>
+</body><?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    header('Location: index.php');
+    exit;
+}
+?>
